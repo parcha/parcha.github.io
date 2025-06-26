@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>3×3×3 Cube Wireframe</title>
+<style>
+ html,body{margin:0;padding:0;overflow:hidden;background:#111;}
+ svg{width:100vw;height:100vh;display:block;}
+ line{stroke:#0ff;stroke-width:1.5;stroke-linecap:round;}
+</style>
+</head>
+<body>
+<svg id="scene"></svg>
+<script>
+// --- configurable parameters ---
+const divisions = 3;      // number of small cubes per axis
+const unit = 1;           // spacing between lattice points
+const fov = 400;          // pseudo‑perspective camera distance
+
+// --- scene setup ---
+const svg = document.getElementById('scene');
+let W = window.innerWidth,
+    H = window.innerHeight;
+
+// build vertex list (lattice nodes of a 3×3×3 cube)
+const vertices = [];
+for (let x = 0; x <= divisions; x++) {
+  for (let y = 0; y <= divisions; y++) {
+    for (let z = 0; z <= divisions; z++) {
+      // center the big cube on the origin
+      vertices.push({
+        x: (x - divisions / 2) * unit,
+        y: (y - divisions / 2) * unit,
+        z: (z - divisions / 2) * unit
+      });
+    }
+  }
+}
+
+// helper to convert lattice index → flat array index
+const idx = (x, y, z) => x * (divisions + 1) * (divisions + 1) + y * (divisions + 1) + z;
+
+// build edge list (connect adjacent lattice nodes)
+const edges = [];
+for (let x = 0; x <= divisions; x++) {
+  for (let y = 0; y <= divisions; y++) {
+    for (let z = 0; z <= divisions; z++) {
+      if (x < divisions) edges.push([idx(x, y, z), idx(x + 1, y, z)]);
+      if (y < divisions) edges.push([idx(x, y, z), idx(x, y + 1, z)]);
+      if (z < divisions) edges.push([idx(x, y, z), idx(x, y, z + 1)]);
+    }
+  }
+}
+
+// create SVG <line> elements for each edge
+const lines = edges.map(() => {
+  const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  svg.appendChild(l);
+  return l;
+});
+
+// state for interactive rotation
+let rotX = 0.6,  // radians
+    rotY = -0.7,
+    dragging = false,
+    lastX = 0,
+    lastY = 0;
+
+// basic 3‑D rotation around X then Y
+function rotate(v, ax, ay) {
+  // rotate around X
+  let y1 = v.y * Math.cos(ax) - v.z * Math.sin(ax);
+  let z1 = v.y * Math.sin(ax) + v.z * Math.cos(ax);
+  // rotate around Y
+  let x2 = v.x * Math.cos(ay) + z1 * Math.sin(ay);
+  let z2 = -v.x * Math.sin(ay) + z1 * Math.cos(ay);
+  return { x: x2, y: y1, z: z2 };
+}
+
+// simple perspective project → 2‑D
+function project(v) {
+  const scale = fov / (fov + v.z);
+  return {
+    x: v.x * scale * 100 + W / 2,
+    y: -v.y * scale * 100 + H / 2
+  };
+}
+
+function draw() {
+  const pts = vertices.map(v => project(rotate(v, rotX, rotY)));
+  edges.forEach((e, i) => {
+    const p1 = pts[e[0]],
+          p2 = pts[e[1]];
+    const line = lines[i];
+    line.setAttribute('x1', p1.x);
+    line.setAttribute('y1', p1.y);
+    line.setAttribute('x2', p2.x);
+    line.setAttribute('y2', p2.y);
+  });
+  requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+
+// --- pointer interaction for 360° rotation ---
+window.addEventListener('pointerdown', e => {
+  dragging = true;
+  lastX = e.clientX;
+  lastY = e.clientY;
+});
+window.addEventListener('pointermove', e => {
+  if (!dragging) return;
+  const dx = e.clientX - lastX;
+  const dy = e.clientY - lastY;
+  rotY += dx * 0.005;
+  rotX += dy * 0.005;
+  lastX = e.clientX;
+  lastY = e.clientY;
+});
+window.addEventListener('pointerup', () => (dragging = false));
+window.addEventListener('resize', () => {
+  W = window.innerWidth;
+  H = window.innerHeight;
+});
+</script>
+</body>
+</html>
