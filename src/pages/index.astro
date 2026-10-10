@@ -8,20 +8,14 @@ import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
 import Education from '../components/Education.astro';
 import Contact from '../components/Contact.astro';
-
-const tagline =
-  'GENERALiST COMPUTER SCiENTiST · SOFTWARE ENGiNEER · SOFTWARE ARCHiTECT · FORMAL SEMANTiCiST · MATHS & COMPUTER SCiENCE RESEARCHER';
+import { profile } from '../data/profile';
 ---
 
 <Base
-  title="Alex Márquez (parcha) — generalist computer scientist & software engineer"
-  description="Portfolio of Alex Márquez (parcha): nearly two decades from formal methods and verified compilers to core auth at Microsoft and Bazel at Google. Languages, projects, and contact — remote only."
+  title={`${profile.name} (${profile.handle}) — generalist computer scientist & software engineer`}
+  description={`Portfolio of ${profile.name} (${profile.handle}): nearly two decades from formal methods and verified compilers to core auth at Microsoft and Bazel at Google. Languages, projects, and contact — ${profile.location}.`}
 >
-  <Hero
-    name="Alex Márquez"
-    pronouns="they/m // él/elle"
-    tagline={tagline}
-  />
+  <Hero />
   <Ticker />
   <About />
   <Stack />

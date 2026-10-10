@@ -1,36 +1,25 @@
 ---
-interface Props {
-  name: string;
-  pronouns: string;
-  tagline: string;
-}
-
-const { name, pronouns, tagline } = Astro.props;
+import { profile } from '../data/profile';
 ---
 
 <section class="hero" aria-labelledby="hero-name">
   <span class="hero__pi" aria-hidden="true">π</span>
   <div class="container hero__inner">
     <p class="kicker mono">portfolio · résumé · est. 2007</p>
-    <h1 id="hero-name" class="hero__name">{name}</h1>
+    <h1 id="hero-name" class="hero__name">{profile.name}</h1>
     <p class="hero__family">
-      <span>Márquez</span>
-      <span>Pérez</span>
-      <span>Muñíz</span>
-      <span>Díaz</span>
-      <span>Puras</span>
-      <span>Thaureaux</span>
-      <span>Fagúndo</span>
-      <span>Rivera</span>
+      {profile.familyNames.map((surname) => (
+        <span>{surname}</span>
+      ))}
     </p>
     <p class="hero__alias mono">
-      also <a href="https://github.com/parcha">@parcha</a> · {pronouns}
+      also <a href={profile.github}>@{profile.handle}</a> · {profile.pronouns}
     </p>
-    <p class="hero__tag">{tagline}</p>
+    <p class="hero__tag">{profile.tagline}</p>
     <div class="hero__cta">
       <a class="btn btn--solid" href="#contact">get in touch</a>
       <a class="btn" href="#work">see the work</a>
-      <span class="hero__loc mono">remote only</span>
+      <span class="hero__loc mono">{profile.location}</span>
     </div>
   </div>
 </section>

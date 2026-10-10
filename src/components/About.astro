@@ -1,5 +1,6 @@
 ---
 import Section from '../components/Section.astro';
+import { profile } from '../data/profile';
 ---
 
 <Section id="about" num="00" title="About">
@@ -20,7 +21,7 @@ import Section from '../components/Section.astro';
       “overly&nbsp;so”. Has taught and mentored in a variety of roles.
     </p>
     <p class="about__status mono">
-      currently: open to senior software engineering roles — remote only.
+      currently: {profile.availability}.
     </p>
   </div>
 </Section>

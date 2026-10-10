@@ -1,10 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
+import { profile } from '../data/profile';
 ---
 
 <Base
   title="404 — undefined behavior"
-  description="This route is undefined. Back to the top of parcha's portfolio."
+  description={`This route is undefined. Back to the top of ${profile.handle}'s portfolio.`}
 >
   <section class="section notfound" aria-labelledby="nf-title">
     <div class="container">

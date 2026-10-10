@@ -1,30 +1,38 @@
 ---
 import Section from '../components/Section.astro';
+import { profile } from '../data/profile';
+
+const show = (url: string) => {
+  const u = new URL(url);
+  return u.host.replace(/^www\./, '') + u.pathname.replace(/\/$/, '');
+};
+
+const lede = profile.availability[0].toUpperCase() + profile.availability.slice(1);
 
 const links = [
   {
-    label: 'alex@etud.io',
-    href: 'mailto:alex@etud.io',
+    label: profile.email,
+    href: `mailto:${profile.email}`,
     note: 'email — fastest',
   },
   {
-    label: 'gitlab.com/parcha',
-    href: 'https://gitlab.com/parcha',
+    label: show(profile.gitlab),
+    href: profile.gitlab,
     note: 'code',
   },
   {
-    label: 'github.com/parcha',
-    href: 'https://github.com/parcha',
+    label: show(profile.github),
+    href: profile.github,
     note: 'website & deprecated code',
   },
   {
-    label: 'linkedin.com/in/alexmarquezperez',
-    href: 'https://www.linkedin.com/in/alexmarquezperez',
+    label: show(profile.linkedin),
+    href: profile.linkedin,
     note: 'professional',
   },
   {
-    label: 'resume.etud.io',
-    href: 'https://resume.etud.io',
+    label: show(profile.resume),
+    href: profile.resume,
     note: 'the résumé, as a PDF',
   },
 ];
@@ -32,8 +40,7 @@ const links = [
 
 <Section id="contact" num="05" title="Contact">
   <p class="contact__lede">
-    Open to senior software engineering roles — remote only. If you’re building
-    something hard, I want to hear about it.
+    {lede}. If you’re building something hard, I want to hear about it.
   </p>
   <ul class="contact__links">
     {
