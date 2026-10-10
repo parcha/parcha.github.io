@@ -2,7 +2,10 @@ const location = 'remote only';
 
 export const profile = {
   // Identity
-  name: 'Alex Márquez',
+  name: 'Alex',
+  get fullName() {
+    return `${this.name} ${this.familyNames[0]}`;
+  },
   familyNames: [
     'Márquez',
     'Pérez',

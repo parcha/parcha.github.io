@@ -26,7 +26,7 @@ const navItems = [
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: profile.name,
+  name: profile.fullName,
   alternateName: profile.handle,
   url: profile.resume,
   email: `mailto:${profile.email}`,
@@ -99,7 +99,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     </main>
     <footer class="footer">
       <div class="container footer__inner">
-	<p>© 2026 {profile.name} · {profile.pronouns}</p>
+	<p>© 2026 {profile.fullName} · {profile.pronouns}</p>
         <p>π — built with Astro · 0&nbsp;kB of JavaScript shipped</p>
       </div>
     </footer>
