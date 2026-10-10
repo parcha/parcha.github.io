@@ -19,7 +19,7 @@ export const profile = {
   handle: 'parcha',
   pronouns: 'they/m // elle/él',
   tagline:
-    'GENERALIST COMPUTER SCIENTIST · SOFTWARE ENGINEER · SOFTWARE ARCHiTECT · FORMAL SEMANTICIST · MATHS & COMPUTER SCIENCE RESEARCHER',
+    'GENERALIST COMPUTER SCIENTIST · SOFTWARE ENGINEER · SOFTWARE ARCHITECT · FORMAL SEMANTICIST · MATHS & COMPUTER SCIENCE RESEARCHER',
   // Availability
   jobTitle: 'Senior Software Engineer',
   location,
