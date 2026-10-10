@@ -13,6 +13,16 @@ const { name, pronouns, tagline } = Astro.props;
   <div class="container hero__inner">
     <p class="kicker mono">portfolio · résumé · est. 2007</p>
     <h1 id="hero-name" class="hero__name">{name}</h1>
+    <p class="hero__family">
+      <span>Márquez</span>
+      <span>Pérez</span>
+      <span>Muñíz</span>
+      <span>Díaz</span>
+      <span>Puras</span>
+      <span>Thaureaux</span>
+      <span>Fagúndo</span>
+      <span>Rivera</span>
+    </p>
     <p class="hero__alias mono">
       also <a href="https://github.com/parcha">@parcha</a> · {pronouns}
     </p>
@@ -67,6 +77,31 @@ const { name, pronouns, tagline } = Astro.props;
     letter-spacing: -0.035em;
     text-wrap: balance;
   }
+
+  .hero__family {
+    margin: -0.5rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 0.7ch;
+    font-family: var(--font-mono);
+    font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+
+  .hero__family span {
+    font-size: 1.45em;
+    line-height: 1;
+  }
+
+  .hero__family span:nth-child(2) { font-size: 1.3em; }
+  .hero__family span:nth-child(3) { font-size: 1.16em; }
+  .hero__family span:nth-child(4) { font-size: 1.03em; }
+  .hero__family span:nth-child(5) { font-size: 0.9em; }
+  .hero__family span:nth-child(6) { font-size: 0.78em; }
+  .hero__family span:nth-child(7) { font-size: 0.67em; }
+  .hero__family span:nth-child(8) { font-size: 0.57em; }
 
   .hero__alias {
     margin: 0;
