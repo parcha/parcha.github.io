@@ -1,0 +1,111 @@
+---
+import '../styles/global.css';
+import '@fontsource/space-grotesk/latin-400.css';
+import '@fontsource/space-grotesk/latin-500.css';
+import '@fontsource/space-grotesk/latin-700.css';
+import '@fontsource/ibm-plex-mono/latin-400.css';
+import '@fontsource/ibm-plex-mono/latin-500.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const navItems = [
+  { href: '#about', label: 'About' },
+  { href: '#stack', label: 'Stack' },
+  { href: '#work', label: 'Work' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#education', label: 'Education' },
+  { href: '#contact', label: 'Contact' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: '(Nicholas) Alexander Márquez',
+  alternateName: 'parcha',
+  url: 'https://resume.etud.io',
+  email: 'mailto:alex@etud.io',
+  jobTitle: 'Senior Software Engineer',
+  knowsAbout: [
+    'Type systems',
+    'Formal verification',
+    'Operational semantics',
+    'Static analysis',
+    'Compilers',
+    'Build systems',
+    'Security',
+    'Embedded Linux',
+    'Distributed systems',
+    'C++',
+    'Rust',
+    'Scala',
+    'Android',
+  ],
+  sameAs: [
+    'https://github.com/parcha',
+    'https://gitlab.com/parcha',
+    'https://www.linkedin.com/in/alexmarquezperez',
+    'https://resume.etud.io',
+  ],
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'Northeastern University' },
+    { '@type': 'CollegeOrUniversity', name: 'Georgia Institute of Technology' },
+  ],
+};
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="parcha" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="color-scheme" content="dark light" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">skip to content</a>
+    <header class="nav">
+      <div class="container nav__inner">
+        <a class="nav__logo" href="/">parcha<span class="caret" aria-hidden="true">_</span></a>
+        <nav aria-label="Sections">
+          <ul>
+            {
+              navItems.map((item) => (
+                <li>
+                  <a href={item.href}>{item.label}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>© 2026 (Nicholas) Alexander Márquez · they/m // él/elle</p>
+        <p>π — built with Astro · 0&nbsp;kB of JavaScript shipped</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+---
+import Section from '../components/Section.astro';
+
+const links = [
+  {
+    label: 'alex@etud.io',
+    href: 'mailto:alex@etud.io',
+    note: 'email — fastest',
+  },
+  {
+    label: 'github.com/parcha',
+    href: 'https://github.com/parcha',
+    note: 'code',
+  },
+  {
+    label: 'gitlab.com/parcha',
+    href: 'https://gitlab.com/parcha',
+    note: 'ConcBuilder · Atlas',
+  },
+  {
+    label: 'linkedin.com/in/alexmarquezperez',
+    href: 'https://www.linkedin.com/in/alexmarquezperez',
+    note: 'professional',
+  },
+  {
+    label: 'resume.etud.io',
+    href: 'https://resume.etud.io',
+    note: 'the résumé, as a PDF',
+  },
+];
+---
+
+<Section id="contact" num="05" title="Contact">
+  <p class="contact__lede">
+    Open to senior software engineering roles — remote only. If you’re building
+    something hard, I want to hear about it.
+  </p>
+  <ul class="contact__links">
+    {
+      links.map((link) => (
+        <li>
+          <a href={link.href}>
+            <span class="contact__label">{link.label}</span>
+            <span class="contact__note mono">{link.note}</span>
+            <span class="contact__arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<style>
+  .contact__lede {
+    margin: 0 0 2.5rem;
+    max-width: 45ch;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  .contact__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .contact__links a {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 1.5rem;
+    padding: 1.15rem 0.25rem;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+  }
+
+  .contact__links a:hover {
+    background-color: var(--bg-soft);
+  }
+
+  .contact__label {
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+
+  .contact__links a:hover .contact__label {
+    color: var(--accent);
+  }
+
+  .contact__note {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .contact__arrow {
+    color: var(--accent);
+  }
+</style>

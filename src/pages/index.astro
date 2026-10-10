@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Ticker from '../components/Ticker.astro';
+import About from '../components/About.astro';
+import Stack from '../components/Stack.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Education from '../components/Education.astro';
+import Contact from '../components/Contact.astro';
+
+const tagline =
+  'GENERALiST COMPUTER SCiENTiST · SOFTWARE ENGiNEER · SOFTWARE ARCHiTECT · FORMAL SEMANTiCiST · MATHS & COMPUTER SCiENCE RESEARCHER';
+---
+
+<Base
+  title="(Nicholas) Alexander Márquez (parcha) — generalist computer scientist & software engineer"
+  description="Portfolio of (Nicholas) Alexander Márquez (parcha): nearly two decades from formal methods and verified compilers to core auth at Microsoft and Bazel at Google. Languages, projects, and contact — remote only."
+>
+  <Hero
+    name="(Nicholas) Alexander Márquez"
+    pronouns="they/m // él/elle"
+    tagline={tagline}
+  />
+  <Ticker />
+  <About />
+  <Stack />
+  <Experience />
+  <Projects />
+  <Education />
+  <Contact />
+</Base>

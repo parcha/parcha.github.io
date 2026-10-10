@@ -1,0 +1,124 @@
+---
+interface Props {
+  name: string;
+  pronouns: string;
+  tagline: string;
+}
+
+const { name, pronouns, tagline } = Astro.props;
+---
+
+<section class="hero" aria-labelledby="hero-name">
+  <span class="hero__pi" aria-hidden="true">π</span>
+  <div class="container hero__inner">
+    <p class="kicker mono">portfolio · résumé · est. 2007</p>
+    <h1 id="hero-name" class="hero__name">{name}</h1>
+    <p class="hero__alias mono">
+      also <a href="https://github.com/parcha">@parcha</a> · {pronouns}
+    </p>
+    <p class="hero__tag">{tagline}</p>
+    <div class="hero__cta">
+      <a class="btn btn--solid" href="#contact">get in touch</a>
+      <a class="btn" href="#work">see the work</a>
+      <span class="hero__loc mono">remote only</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(5rem, 14vh, 9rem) clamp(3rem, 8vh, 6rem);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 4.5rem 4.5rem;
+    opacity: 0.25;
+    mask-image: radial-gradient(ellipse 90% 80% at 50% 15%, black, transparent 78%);
+    pointer-events: none;
+  }
+
+  .hero__inner {
+    position: relative;
+    display: grid;
+    gap: 1.5rem;
+    justify-items: start;
+  }
+
+  .kicker {
+    margin: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .hero__name {
+    margin: 0;
+    font-size: clamp(3.2rem, 10vw, 8rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  .hero__alias {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+
+  .hero__alias a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .hero__alias a:hover {
+    color: var(--accent);
+  }
+
+  .hero__tag {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: clamp(0.8rem, 1.6vw, 1rem);
+    line-height: 1.9;
+    color: var(--muted);
+    max-width: 62ch;
+  }
+
+  .hero__cta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero__loc {
+    color: var(--muted);
+    font-size: 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 0.6rem 1rem;
+  }
+
+  .hero__pi {
+    position: absolute;
+    right: -8vw;
+    top: 50%;
+    transform: translateY(-52%);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 55vw;
+    line-height: 1;
+    color: color-mix(in oklab, var(--accent) 6%, transparent);
+    pointer-events: none;
+    user-select: none;
+  }
+</style>

@@ -1,0 +1,153 @@
+---
+import Section from '../components/Section.astro';
+
+const languages = [
+  'C',
+  'C++',
+  'Scala',
+  'Java',
+  'Python (2 & 3)',
+  'Rust',
+  'SQL (Postgres)',
+  'Bash',
+  'Gawk',
+  'Racket (& Redex)',
+  'LaTeX',
+  'Go',
+  'C#',
+  'Idris2',
+];
+
+const capabilities = [
+  'type systems',
+  'metaprogramming & reflection',
+  'networking',
+  'multi-threading & shared memory',
+  'parallelization',
+  'inter-process communication',
+  'static analysis',
+  'compilation toolchains',
+  'ELF dynamic linkers',
+  'build systems (incl. Bazel)',
+  'GCC & LLVM optimizations',
+  'GDB',
+  'formal verification',
+  'operational semantics',
+  'Linux — kernel & userspace (incl. early)',
+  'x86 · ARM · AVR',
+  'Yocto & Buildroot',
+  'Git · Subversion · Perforce',
+];
+
+const naturalLanguages = [
+  { name: 'English', level: 'technical' },
+  { name: 'Spanish', level: 'fluent — conversational & non-technical' },
+  { name: 'French', level: 'reading & writing' },
+];
+---
+
+<Section id="stack" num="01" title="Stack">
+  <div class="stack">
+    <div class="stack__block">
+      <h3 class="stack__label mono">languages</h3>
+      <ul class="chips">
+        {languages.map((lang) => (
+          <li class="chip">{lang}</li>
+        ))}
+      </ul>
+    </div>
+    <div class="stack__block">
+      <h3 class="stack__label mono">capabilities</h3>
+      <ul class="chips">
+        {capabilities.map((cap) => (
+          <li class="chip">{cap}</li>
+        ))}
+      </ul>
+    </div>
+    <div class="stack__block">
+      <h3 class="stack__label mono">natural languages</h3>
+      <ul class="langs">
+        {naturalLanguages.map((lang) => (
+          <li class="langs__row">
+            <span class="langs__name">{lang.name}</span>
+            <span class="langs__level mono">{lang.level}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <p class="stack__clearance mono">security: TS&nbsp;Cleared</p>
+  </div>
+</Section>
+
+<style>
+  .stack {
+    display: grid;
+    gap: 3rem;
+  }
+
+  .stack__label {
+    margin: 0 0 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .chip {
+    padding: 0.45rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: var(--bg-soft);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--ink);
+  }
+
+  .langs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.4rem;
+    max-width: 34rem;
+  }
+
+  .langs__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .langs__name {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .langs__level {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  .stack__clearance {
+    margin: 0;
+    justify-self: start;
+    padding: 0.7rem 1.1rem;
+    border-left: 3px solid var(--accent);
+    background: var(--bg-soft);
+    font-size: 0.85rem;
+    color: var(--ink);
+  }
+</style>

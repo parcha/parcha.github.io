@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="404 — undefined behavior"
+  description="This route is undefined. Back to the top of parcha's portfolio."
+>
+  <section class="section notfound" aria-labelledby="nf-title">
+    <div class="container">
+      <p class="mono notfound__err">error: 404</p>
+      <h1 id="nf-title" class="notfound__title">undefined behavior.</h1>
+      <p class="notfound__body">
+        This route doesn’t exist. The rest of the page is still well-defined, though —
+        <a href="/">back to the top</a>.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .notfound {
+    min-height: 50vh;
+    display: grid;
+    place-items: center;
+  }
+
+  .notfound > .container {
+    display: grid;
+    gap: 1rem;
+    justify-items: start;
+  }
+
+  .notfound__err {
+    margin: 0;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+  }
+
+  .notfound__title {
+    margin: 0;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .notfound__body {
+    margin: 0;
+    max-width: 45ch;
+    color: var(--muted);
+  }
+
+  .notfound__body a {
+    color: var(--ink);
+    text-decoration-color: var(--accent);
+  }
+</style>

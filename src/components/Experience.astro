@@ -1,0 +1,165 @@
+---
+import Section from '../components/Section.astro';
+
+interface Job {
+  company: string;
+  role: string;
+  where: string;
+  when: string;
+  notes: string[];
+}
+
+const jobs: Job[] = [
+  {
+    company: 'Microsoft',
+    role: 'Senior Software Engineer',
+    where: 'Remote',
+    when: 'July 2024 – September 2025',
+    notes: [
+      'Shipped core authentication — the Torus system that authenticates every user of all of Microsoft’s products and services.',
+      'Led resolution of security vulnerabilities across ControlPlane, Torus, RemoteAccess, and TorusPhoneApp.',
+      'Led design of an AI system that resolves routine security vulnerabilities and large dependency-upgrade rewrites across these products.',
+      'On-call for Service Authentication: 12-hour days for two weeks, five times a year.',
+      'Delivered technical talks and mentored engineers on the team.',
+    ],
+  },
+  {
+    company: 'Google',
+    role: 'Software Engineer L5',
+    where: 'Atlanta, GA',
+    when: 'June 2021 – May 2023',
+    notes: [
+      'Roboleaf: migrated Android’s custom Soong and Kati build system to Bazel.',
+      'Migrated the build of the Android platform’s binaries from Python to Bazel.',
+      'Built and maintained C and C++ object, static, and shared library build infrastructure, and its test infrastructure.',
+      'Broader “sheriff” for Bazel at Google: on-call triage of cross-cutting build issues.',
+      'Mentored junior engineers on C and C++ linking, programming languages, and build systems.',
+    ],
+  },
+  {
+    company: 'Raytheon',
+    role: 'Cyber Engineer II — TS Cleared',
+    where: 'Greenville, SC',
+    when: 'November 2015 – March 2019',
+    notes: [
+      'Extended the runtime dynamic linker with new capabilities for a secure, soft real-time embedded Linux OS.',
+      'Built the build, deploy, provision, and maintenance tooling that monitored the MIL-STD-1553 bus for intrusions and anomalies, in kernel space and userspace; architecture focused on performance, fault tolerance, verifiability, and soft real-time behavior.',
+      'Wrote an scons + C++ sbuild module that obfuscated byte streams against static and dynamic analysis and reverse engineering.',
+      'Built PowerPC system emulation and test infrastructure.',
+      'Wrote firmware for an AVR ATmega32U4-based keyboard, including a proof of concept for malware propagation to a host.',
+      'Reverse engineered a heavily threaded x86-64 Linux network management server (SSL + CORBA RPC) to work around its licensing.',
+    ],
+  },
+  {
+    company: 'DG Technology Group',
+    role: 'Senior Software Engineer',
+    where: 'Jupiter, FL',
+    when: 'July 2014 – April 2015',
+    notes: [
+      'Re-architected a proprietary real-time brokerage and trading platform: multiple C++ modules sharing a Postgres database.',
+      'Re-implemented the risk-management algorithms.',
+      'Python + SciPy analytics, with Pandas and Seaborn visualization.',
+    ],
+  },
+  {
+    company: 'Northeastern University',
+    role: 'PhD Researcher',
+    where: 'Boston, MA',
+    when: 'May 2012 – December 2013',
+    notes: [
+      'Programming languages research: static analysis via abstract interpretation, verified compilers, software contracts, temporal logic, and automata.',
+      'Funded by a DARPA project on Android security.',
+    ],
+  },
+  {
+    company: 'Georgia Institute of Technology',
+    role: 'Graduate Researcher',
+    where: 'Atlanta, GA',
+    when: 'May 2011 – December 2012',
+    notes: [
+      'DARPA UHPC project: informal and formal program analysis characterizing challenge problems and candidate architectures.',
+      'Built Cetus-UHPC: a Cetus PA/S2S derivative computing algebraic metrics of parallelizability and memory footprint for a restricted-C subset.',
+    ],
+  },
+  {
+    company: 'Georgia Institute of Technology',
+    role: 'Undergraduate Researcher',
+    where: 'Atlanta, GA',
+    when: 'April 2009 – May 2010',
+    notes: [
+      'Co-developed AFABL: an agent-based simulation language for non-programmers, with runtime reinforcement learning adapting agent behavior in place of much static behavior programming.',
+    ],
+  },
+  {
+    company: 'Cisco Systems',
+    role: 'Software Engineer Intern',
+    where: 'Boulder, CO',
+    when: 'May 2007 – August 2007',
+    notes: [
+      'Helped migrate the ASA codebase to Safer C; implemented and optimized the Safer C standard library.',
+      'Migrated developer policy; audited the Linux kernel components of the codebase.',
+    ],
+  },
+];
+---
+
+<Section id="work" num="02" title="Work">
+  <ol class="jobs">
+    {
+      jobs.map((job) => (
+        <li class="entry">
+          <div class="entry__when">
+            <span class="entry__date">{job.when}</span>
+            <span class="entry__where">{job.where}</span>
+          </div>
+          <div class="entry__body">
+            <h3 class="entry__title">
+              {job.role} <span class="entry__dash">—</span>
+              <span class="entry__company">{job.company}</span>
+            </h3>
+            <ul class="job__notes">
+              {job.notes.map((note) => (
+                <li>{note}</li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</Section>
+
+<style>
+  .jobs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 3.5rem;
+  }
+
+  .entry__date {
+    color: var(--ink);
+  }
+
+  .entry__company {
+    color: var(--accent);
+  }
+
+  .entry__dash {
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .job__notes {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.5rem;
+    color: var(--muted);
+  }
+
+  .job__notes li::marker {
+    color: var(--accent);
+  }
+</style>

@@ -1,0 +1,56 @@
+---
+import Section from '../components/Section.astro';
+---
+
+<Section id="about" num="00" title="About">
+  <div class="about">
+    <p class="lede">
+      Senior engineer and scientist. Nearly two decades researching, designing, formalizing,
+      prototyping, implementing, and maintaining solutions to complex problems.
+    </p>
+    <p>
+      A computer science generalist: from high-level software, APIs, and theory, down to
+      low-level hardware architecture, compilers, and static analysis. Language-agnostic, with
+      a specialty in type-driven development, object-oriented, and functional design. Fast and
+      eager to learn new languages, techniques, frameworks, and paradigms.
+    </p>
+    <p>
+      Prefers collaborative environments, and puts a premium on being able to contribute to
+      open source. Tech lead for teams of two to eight. Communicative to the point of
+      “overly&nbsp;so”. Has taught and mentored in a variety of roles.
+    </p>
+    <p class="about__status mono">
+      currently: open to senior software engineering roles — remote only.
+    </p>
+  </div>
+</Section>
+
+<style>
+  .about {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 65ch;
+  }
+
+  .about p {
+    margin: 0;
+  }
+
+  .lede {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  .about__status {
+    margin-top: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 2px;
+    background: var(--bg-soft);
+    font-size: 0.9rem;
+    color: var(--ink);
+  }
+</style>

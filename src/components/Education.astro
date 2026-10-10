@@ -1,0 +1,84 @@
+---
+import Section from '../components/Section.astro';
+
+interface School {
+  degree: string;
+  school: string;
+  where: string;
+  when: string;
+  detail: string;
+}
+
+const schools: School[] = [
+  {
+    degree: 'PhD candidate, Computer Science',
+    school: 'Northeastern University',
+    where: 'Boston, MA',
+    when: 'May 2012 – December 2013',
+    detail:
+      'Programming languages. Withdrew with all coursework complete. Abstract interpretation, verified compilers (Hoare-style logics), software contracts, automata, temporal, spatial, and separation logics. Graduate teaching assistant for Dr. Matthias Felleisen’s Fundamentals I — introduction to systematic problem solving, open to all majors.',
+  },
+  {
+    degree: 'M.S. in Computer Science — GPA 3.7',
+    school: 'Georgia Institute of Technology',
+    where: 'Atlanta, GA',
+    when: 'Fall 2010 – Spring 2013',
+    detail:
+      'Thesis in programming languages. (The degree is in hardware architecture — the story on request.)',
+  },
+  {
+    degree: 'B.S. in Computer Science, Honors Program — major GPA 3.8',
+    school: 'Georgia Institute of Technology',
+    where: 'Atlanta, GA',
+    when: 'Fall 2006 – Spring 2010',
+    detail:
+      'Inaugural class of the honors program. Thesis in AI (machine learning & programming languages). Four curriculum specializations — intelligence, systems & architecture, devices, information internetworks (two make a degree). Member of Upsilon Pi Epsilon.',
+  },
+];
+---
+
+<Section id="education" num="04" title="Education">
+  <ol class="schools">
+    {
+      schools.map((s) => (
+        <li class="entry entry--muted">
+          <div class="entry__when">
+            <span class="entry__date">{s.when}</span>
+            <span class="entry__where">{s.where}</span>
+          </div>
+          <div class="entry__body">
+            <h3 class="entry__title">{s.degree}</h3>
+            <p class="school__school">{s.school}</p>
+            <p class="school__detail">{s.detail}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</Section>
+
+<style>
+  .schools {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 3rem;
+  }
+
+  .entry__date {
+    color: var(--ink);
+  }
+
+  .school__school {
+    margin: 0 0 0.75rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .school__detail {
+    margin: 0;
+    max-width: 68ch;
+    color: var(--muted);
+  }
+</style>
