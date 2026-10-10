@@ -7,7 +7,7 @@
   --ink: #e8edf2;
   --muted: #9aa7b4;
   --line: #232b35;
-  --accent: #c9f53f;
+  --accent: #34d399;
   --accent-ink: #0b0f14;
   --font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
@@ -21,7 +21,7 @@
     --ink: #171b20;
     --muted: #55606b;
     --line: #d8d2c4;
-    --accent: #446e00;
+    --accent: #7824a8;
     --accent-ink: #f2efe8;
   }
 }

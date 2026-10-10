@@ -13,7 +13,7 @@ import { profile } from '../data/profile';
       ))}
     </p>
     <p class="hero__alias mono">
-      also <a href={profile.github}>@{profile.handle}</a> · {profile.pronouns}
+      also <a href={profile.gitlab}>@{profile.handle}</a> · {profile.pronouns} · AKA 艾宇睿龙 (𑀆𑀚𑀻𑀯)
     </p>
     <p class="hero__tag">{profile.tagline}</p>
     <div class="hero__cta">
@@ -74,23 +74,23 @@ import { profile } from '../data/profile';
     align-items: baseline;
     gap: 0.4rem 0.7ch;
     font-family: var(--font-mono);
-    font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
     letter-spacing: 0.02em;
     color: var(--muted);
   }
 
   .hero__family span {
-    font-size: 1.45em;
+    font-size: 2em;
     line-height: 1;
   }
 
-  .hero__family span:nth-child(2) { font-size: 1.3em; }
-  .hero__family span:nth-child(3) { font-size: 1.16em; }
-  .hero__family span:nth-child(4) { font-size: 1.03em; }
-  .hero__family span:nth-child(5) { font-size: 0.9em; }
-  .hero__family span:nth-child(6) { font-size: 0.78em; }
-  .hero__family span:nth-child(7) { font-size: 0.67em; }
-  .hero__family span:nth-child(8) { font-size: 0.57em; }
+  .hero__family span:nth-child(2) { font-size: 1.8em; }
+  .hero__family span:nth-child(3) { font-size: 1.62em; }
+  .hero__family span:nth-child(4) { font-size: 1.45em; }
+  .hero__family span:nth-child(5) { font-size: 1.3em; }
+  .hero__family span:nth-child(6) { font-size: 1.16em; }
+  .hero__family span:nth-child(7) { font-size: 1.03em; }
+  .hero__family span:nth-child(8) { font-size: 0.9em; }
 
   .hero__alias {
     margin: 0;
