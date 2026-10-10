@@ -101,6 +101,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <div class="container footer__inner">
 	<p>© 2026 {profile.fullName} · {profile.pronouns}</p>
         <p>π — built with Astro · 0&nbsp;kB of JavaScript shipped</p>
+        <div class="theme" role="radiogroup" aria-label="color theme">
+          <input class="theme__input" type="radio" name="theme" id="theme-system" checked />
+          <label class="theme__opt" for="theme-system">auto</label>
+          <input class="theme__input" type="radio" name="theme" id="theme-light" />
+          <label class="theme__opt" for="theme-light">light</label>
+          <input class="theme__input" type="radio" name="theme" id="theme-dark" />
+          <label class="theme__opt" for="theme-dark">dark</label>
+        </div>
       </div>
     </footer>
   </body>
