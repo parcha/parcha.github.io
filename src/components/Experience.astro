@@ -16,11 +16,11 @@ const jobs: Job[] = [
     where: 'Remote',
     when: 'July 2024 – September 2025',
     notes: [
-      'Shipped core authentication — the Torus system that authenticates every user of all of Microsoft’s products and services.',
-      'Led resolution of security vulnerabilities across ControlPlane, Torus, RemoteAccess, and TorusPhoneApp.',
-      'Led design of an AI system that resolves routine security vulnerabilities and large dependency-upgrade rewrites across these products.',
-      'On-call for Service Authentication: 12-hour days for two weeks, five times a year.',
-      'Delivered technical talks and mentored engineers on the team.',
+      'Contributed to the Torus team, the core authorization and authentication service used across Microsoft’s products and customers.',
+      'Led the resolution of security vulnerabilities across the ControlPlane, Torus, RemoteAccess, and TorusPhoneApp repositories, for application security.',
+      'Collaborated across teams to build an AI system that automated routine security vulnerability resolution and supported major dependency upgrades requiring code rewrites.',
+      'On-call for the Service Auth team: 12-hour days for 14 days, about five times a year.',
+      'Delivered technical talks on languages, build systems, packaging, optimization, and reliability across teams.',
     ],
   },
   {
@@ -29,10 +29,10 @@ const jobs: Job[] = [
     where: 'Atlanta, GA',
     when: 'June 2021 – May 2023',
     notes: [
-      'Roboleaf: migrated Android’s custom Soong and Kati build system to Bazel.',
-      'Migrated the build of the Android platform’s binaries from Python to Bazel.',
+      'Roboleaf: migrated Android’s bespoke Soong- and Kati-based build system toward Bazel.',
+      'Implemented the Python binary build migration conversion, moving components from legacy workflows to Bazel.',
       'Built and maintained C and C++ object, static, and shared library build infrastructure, and its test infrastructure.',
-      'Broader “sheriff” for Bazel at Google: on-call triage of cross-cutting build issues.',
+      'Served in rotation as the broader Bazel “sheriff”: on-call triage and coordination of build and infrastructure issues.',
       'Mentored junior engineers on C and C++ linking, programming languages, and build systems.',
     ],
   },
@@ -42,9 +42,10 @@ const jobs: Job[] = [
     where: 'Greenville, SC',
     when: 'November 2015 – March 2019',
     notes: [
-      'Extended the runtime dynamic linker with new capabilities for a secure, soft real-time embedded Linux OS.',
-      'Built the build, deploy, provision, and maintenance tooling that monitored the MIL-STD-1553 bus for intrusions and anomalies, in kernel space and userspace; architecture focused on performance, fault tolerance, verifiability, and soft real-time behavior.',
-      'Wrote an scons + C++ sbuild module that obfuscated byte streams against static and dynamic analysis and reverse engineering.',
+      'Enhanced the runtime dynamic linker with additional capabilities.',
+      'Created a secure, soft real-time embedded Linux OS and its build, deployment, provisioning, and maintenance system.',
+      'Designed the architecture of the primary program monitoring a widely used industrial bus for intrusions and anomalies — performance, fault tolerance, verifiability, soft real-time behavior.',
+      'Wrote an internal SCons build-system module in C++ obfuscating byte streams against static and dynamic analysis and active reverse engineering.',
       'Built PowerPC system emulation and test infrastructure.',
       'Wrote firmware for an AVR ATmega32U4-based keyboard, including a proof of concept for malware propagation to a host.',
       'Reverse engineered a heavily threaded x86-64 Linux network management server (SSL + CORBA RPC) to work around its licensing.',
@@ -57,8 +58,7 @@ const jobs: Job[] = [
     when: 'July 2014 – April 2015',
     notes: [
       'Re-architected a proprietary real-time brokerage and trading platform: multiple C++ modules sharing a Postgres database.',
-      'Re-implemented the risk-management algorithms.',
-      'Python + SciPy analytics, with Pandas and Seaborn visualization.',
+      'Re-implemented the risk-management algorithms to strengthen trading analytics; Python + SciPy, with Pandas and Seaborn visualization.',
     ],
   },
   {
@@ -67,8 +67,8 @@ const jobs: Job[] = [
     where: 'Boston, MA',
     when: 'May 2012 – December 2013',
     notes: [
-      'Programming languages research: static analysis via abstract interpretation, verified compilers, software contracts, temporal logic, and automata.',
-      'Funded by a DARPA project on Android security.',
+      'Programming languages research: static analysis through abstract interpretation, verified compilers, software contracts, temporal logics, and automata.',
+      'Contributed to a DARPA-funded Android security project, applying that research to software analysis and verification.',
     ],
   },
   {
@@ -77,8 +77,8 @@ const jobs: Job[] = [
     where: 'Atlanta, GA',
     when: 'May 2011 – December 2012',
     notes: [
-      'DARPA UHPC project: informal and formal program analysis characterizing challenge problems and candidate architectures.',
-      'Built Cetus-UHPC: a Cetus PA/S2S derivative computing algebraic metrics of parallelizability and memory footprint for a restricted-C subset.',
+      'DARPA UHPC: informal and formal program analyses evaluating challenge problems, supporting objective assessment of next-generation architectures.',
+      'Built Cetus-UHPC: a Cetus PA/S2S derivative, with reference implementations in a semantically restricted C subset, yielding abstract and algebraic metrics.',
     ],
   },
   {
@@ -87,7 +87,8 @@ const jobs: Job[] = [
     where: 'Atlanta, GA',
     when: 'April 2009 – May 2010',
     notes: [
-      'Co-developed AFABL: an agent-based simulation language for non-programmers, with runtime reinforcement learning adapting agent behavior in place of much static behavior programming.',
+      'Co-developed AFABL: a programming language for efficient, flexible agent-based simulations aimed at non-programmers.',
+      'Runtime reinforcement learning adapts agent behavior, lifting most of the burden of statically programming it.',
     ],
   },
   {
@@ -96,14 +97,14 @@ const jobs: Job[] = [
     where: 'Boulder, CO',
     when: 'May 2007 – August 2007',
     notes: [
-      'Helped migrate the ASA codebase to Safer C; implemented and optimized the Safer C standard library.',
-      'Migrated developer policy; audited the Linux kernel components of the codebase.',
+      'Supported the ASA (Adaptive Security Appliance) codebase migration to Safer C; implemented and optimized the Safer C standard library.',
+      'Assisted developer policy migration to updated security and engineering standards; audited the codebase’s Linux kernel components for security and reliability.',
     ],
   },
 ];
 ---
 
-<Section id="work" num="02" title="Work">
+<Section id="work" title="Work">
   <ol class="jobs">
     {
       jobs.map((job) => (

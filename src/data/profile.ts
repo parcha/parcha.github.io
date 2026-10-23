@@ -26,8 +26,10 @@ export const profile = {
   availability: `open to senior software engineering roles — ${location}`,
   // Contact
   email: 'alex@etud.io',
-  github: 'https://github.com/parcha',
+  website: 'https://etud.io',
   gitlab: 'https://gitlab.com/parcha',
+  kde: 'https://invent.kde.org/parcha',
+  github: 'https://github.com/parcha',
   linkedin: 'https://www.linkedin.com/in/alexmarquezperez',
   resume: 'https://resume.etud.io',
 };

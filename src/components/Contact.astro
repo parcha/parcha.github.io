@@ -16,9 +16,19 @@ const links = [
     note: 'email — fastest',
   },
   {
+    label: show(profile.website),
+    href: profile.website,
+    note: 'the website',
+  },
+  {
     label: show(profile.gitlab),
     href: profile.gitlab,
     note: 'code',
+  },
+  {
+    label: show(profile.kde),
+    href: profile.kde,
+    note: 'KDE',
   },
   {
     label: show(profile.github),
@@ -38,7 +48,7 @@ const links = [
 ];
 ---
 
-<Section id="contact" num="05" title="Contact">
+<Section id="contact" title="Contact">
   <p class="contact__lede">
     {lede}. If you’re building something hard, I want to hear about it.
   </p>
