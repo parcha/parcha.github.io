@@ -131,6 +131,16 @@ const jobs: Job[] = [
 </Section>
 
 <style>
+  .entry {
+    grid-template-columns: 15rem 1fr;
+  }
+
+  @media (max-width: 56rem) {
+    .entry {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .jobs {
     list-style: none;
     margin: 0;
