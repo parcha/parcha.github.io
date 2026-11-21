@@ -1,8 +1,13 @@
 ---
 import Section from '../components/Section.astro';
 
+interface NamePart {
+  label: string;
+  href?: string;
+}
+
 interface Project {
-  name: string;
+  name: string | NamePart[];
   href?: string;
   meta: string;
   when: string;
@@ -10,6 +15,17 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    name: [
+      { label: 'captiond', href: 'https://captiond.etud.io' },
+      { label: ' & ' },
+      { label: 'Kaption', href: 'https://kaption.etud.io' },
+    ],
+    meta: 'C++20 · Qt/QML · KDE Frameworks; PipeWire · whisper.cpp',
+    when: '2026 – present',
+    description:
+      'Fully local live captioning for anything a Linux desktop plays or hears, split into a toolkit-free daemon and its frontends. <i>captiond</i> captures system audio and microphones via PipeWire, transcribes on whatever GPU or CPU backend it discovers at runtime, and streams captions, split into committed text and a revisable tail, over a JSON Lines socket and D-Bus. <i>Kaption</i> (KDE Plasma) and <i>Qaption</i> (Qt-only) render them as a click-through overlay, sharing all QML and with differences minimally isolated to a single platform-integration class.',
+  },
   {
     name: 'ConcBuilder',
     href: 'https://gitlab.com/parcha/concbuilder',
@@ -56,6 +72,7 @@ const projects: Project[] = [
     description:
       'An ISA-native, C-like switch statement and a novel ARM multi-way branch predictor; modified gem5, and modified clang/LLVM middle and back ends. With Dr. Milos Prvulović.',
   },
+
 ];
 ---
 
@@ -64,17 +81,32 @@ const projects: Project[] = [
     {
       projects.map((project) => (
         <article class="card">
-          <p class="card__meta mono">{project.meta} · {project.when}</p>
+          <p class="card__meta mono">
+            <span>{project.meta}</span>
+            <span>· {project.when}</span>
+          </p>
           <h3 class="card__name">
-            {project.href ? (
-              <a href={project.href}>
-                {project.name} <span class="card__arrow" aria-hidden="true">↗</span>
-              </a>
+            {typeof project.name === 'string' ? (
+              project.href ? (
+                <a href={project.href}>
+                  {project.name} <span class="card__arrow" aria-hidden="true">↗</span>
+                </a>
+              ) : (
+                project.name
+              )
             ) : (
-              project.name
+              project.name.map((part) =>
+                part.href ? (
+                  <a href={part.href}>
+                    {part.label} <span class="card__arrow" aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  <span>{part.label}</span>
+                )
+              )
             )}
           </h3>
-          <p class="card__desc">{project.description}</p>
+          <p class="card__desc" set:html={project.description}></p>
         </article>
       ))
     }
@@ -108,6 +140,9 @@ const projects: Project[] = [
   }
 
   .card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.6rem;
     margin: 0;
     font-size: 0.75rem;
     letter-spacing: 0.1em;
