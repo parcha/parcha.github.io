@@ -9,8 +9,8 @@
   --line: #232b35;
   --accent: #34d399;
   --accent-ink: #0b0f14;
-  --font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', 'Noto Sans SC', 'Noto Sans Old Persian', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, 'Noto Sans SC', 'Noto Sans Old Persian', monospace;
 }
 
 @media (prefers-color-scheme: light) {
